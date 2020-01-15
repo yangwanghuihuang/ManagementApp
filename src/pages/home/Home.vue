@@ -2,14 +2,14 @@
   <div class="notice">
       <div v-for="(item, index) in system_notice_list" :key="index">
         <div class="itemStyle">
-             <div class="left">{{item.response.notice.title}}</div>
+             <div class="left"  @click="itemStyle()">{{item.response.notice.title}}</div>
              <div class="right"> 
                {{item.response.notice.content}}
                <div class="r_bottom">{{item.response.notice.time}}</div>
              </div>
-             
-              
         </div>
+        <van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
+        <!-- 无法在打包的app上，得到这条线 -->
         <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">公告</van-divider>
       </div>
       
@@ -30,6 +30,12 @@ export default {
       height: {
         height: ""
       },
+       show: false,
+      actions: [
+        { name: '查看公告' },
+        { name: '公告详情' },
+        { name: '发布时间', subname: '2020-01-01' }
+      ],
       system_notice_list:[]
     };
   },
@@ -61,6 +67,15 @@ export default {
       );
   },
   methods: {
+    itemStyle(){
+      this.show = true
+    },
+     onSelect(item) {
+      // 默认情况下，点击选项时不会自动关闭菜单
+      // 可以通过 close-on-click-action 属性开启自动关闭
+      this.show = false;
+      Toast(item.name);
+    },
     skipToDetail() {
       this.$router.push({ path: "workflow" });
     }
@@ -71,6 +86,7 @@ export default {
 .notice{
   width: 100%;
   height: 100%;
+ 
   .left{
     width: 50%;
     height: 100%;
@@ -78,6 +94,7 @@ export default {
     font-size: 25px;
     margin-left: 2rem;
     text-align: left;
+    border-bottom:1px solid #666;
   }
   .right{
      float: left;
@@ -86,6 +103,7 @@ export default {
     margin-top: 2rem;
     height: 100px;
     padding-left: 1.3rem;
+   border-bottom:1px solid #666;
     .r_bottom{
       margin-top: 3.5rem;
       font-size: 10px;

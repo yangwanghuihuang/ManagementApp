@@ -24,22 +24,24 @@
           active:
             "http://sucai.suoluomei.cn/sucai_zs/images/20190910093117-fx.png"
         },
+      
         {
-          name: "personal",
+          name: "workflow",
           title: "学习",
-          normal:
+           normal:
             "http://sucai.suoluomei.cn/sucai_zs/images/20190910093117-xx.png",
           active:
             "http://sucai.suoluomei.cn/sucai_zs/images/20190910093117-xx2.png"
+       
         },
-        {
-          name: "workflow",
+          {
+          name: "personal",
           title: "我的",
           normal:
             "http://sucai.suoluomei.cn/sucai_zs/images/20190910093117-wd.png",
           active:
             "http://sucai.suoluomei.cn/sucai_zs/images/20190910093117-wd2.png"
-        }
+        },
       ]
       }
     },
