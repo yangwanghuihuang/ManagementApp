@@ -1,6 +1,9 @@
 <template>
   <div class="www">
-    <div id="main" :option="option"></div>
+    <!-- <div class="echar"> -->
+        <div id="main" :option="option" style="width: 100%;height:50%;"></div>
+    <!-- </div> -->
+  
     <div class="workflowBg">
         <div class="workflow-top">
             <div class="workflow-top-text">
@@ -75,7 +78,11 @@ export default {
   },
     mounted(){
        const echart=echarts.init(document.getElementById('main'));
-       echart.setOption(this.option)
+       echart.setOption(this.option);
+      //  window.onresize = function(){
+      //   echart.resize();       
+      //   }
+      // window.onresize=echart.resize;
     },
     components: {
     'tabbar': tabbar
@@ -90,7 +97,6 @@ export default {
 <style lang="less" scoped>
   .www {
     height: 100%;
-    
     .workflowBg {
       height: 100%;
       background-image: url(../../../static/images/bg_workflow.png);
@@ -98,12 +104,10 @@ export default {
       background-size: 100% 100%;
      padding-bottom: 89%;
       // padding-bottom: 20rem;
-      #main{
-        @media screen {
-          width:360px;
-          height:200px;
-        }
-      }
+      // .echar{
+      //   width: 100%;
+      //   height: 0%;
+      // }
       .workflow-top {
         padding-top: 0.8rem;
         padding-left: 1.8rem;
