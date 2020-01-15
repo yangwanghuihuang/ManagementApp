@@ -1,4 +1,4 @@
-var path = require('path')
+var path = require('path')//NOde.js核心模块
 var utils = require('./utils')
 var webpack = require('webpack')
 var config = require('../config')
@@ -7,7 +7,8 @@ var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var env = config.build.env
-
+//webpack配置：webpack  loader在定一定的时候，一定要定义在moduals.rules
+//loader用于转换某些类型的模块 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
@@ -16,13 +17,18 @@ var webpackConfig = merge(baseWebpackConfig, {
     })
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
+  //webpack在哪里输出它所创建的bundles，整个应用程序结构，会
+  // 会被编译到你指定的输出路径文件夹 中
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
+  //插件用于执行范围更广的任务 。插件的范围包括（打包，优化
+  //压缩，重新定义环境中的变量）
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
+    //DefinePlugin允许在编译时（compile time）配置全局常量
     new webpack.DefinePlugin({
       'process.env': env
     }),

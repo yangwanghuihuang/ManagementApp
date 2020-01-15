@@ -18,7 +18,7 @@
 </template>
 
 <script>
- import notice from "../../assets/conf/moke/index.js";
+import notice from "../../assets/conf/moke/index.js";
 import services from  "../../assets/conf/services"
 import tabbar from "../../components/tobbar.vue"; //引用组件的地址
 export default {

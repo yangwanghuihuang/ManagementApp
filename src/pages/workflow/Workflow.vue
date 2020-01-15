@@ -1,5 +1,6 @@
 <template>
   <div class="www">
+    <div id="main" :option="option"></div>
     <div class="workflowBg">
         <div class="workflow-top">
             <div class="workflow-top-text">
@@ -48,8 +49,34 @@
 </template>
 <script>
   import tabbar from "../../components/tobbar.vue";  //引用组件的地址
+  import echarts from 'echarts'
 export default {
-
+  data(){
+    return{
+      option: {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 50]
+            }]
+        },
+    }
+  },
+    mounted(){
+       const echart=echarts.init(document.getElementById('main'));
+       echart.setOption(this.option)
+    },
     components: {
     'tabbar': tabbar
   },
@@ -63,6 +90,7 @@ export default {
 <style lang="less" scoped>
   .www {
     height: 100%;
+    
     .workflowBg {
       height: 100%;
       background-image: url(../../../static/images/bg_workflow.png);
@@ -70,7 +98,12 @@ export default {
       background-size: 100% 100%;
      padding-bottom: 89%;
       // padding-bottom: 20rem;
-
+      #main{
+        @media screen {
+          width:360px;
+          height:200px;
+        }
+      }
       .workflow-top {
         padding-top: 0.8rem;
         padding-left: 1.8rem;
