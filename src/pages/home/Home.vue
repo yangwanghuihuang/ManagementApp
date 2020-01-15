@@ -8,7 +8,9 @@
                <div class="r_bottom">{{item.response.notice.time}}</div>
              </div>
         </div>
-        <van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
+        <!-- <van-action-sheet v-model="show" v-bind:class="{'class1': title}"  :actions="actions" @select="onSelect" /> -->
+        <van-action-sheet v-model="show" :title="title"  :actions="actions" @select="onSelect" />
+        <!-- <div  v-html="title"></div> -->
         <!-- 无法在打包的app上，得到这条线 -->
         <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">公告</van-divider>
       </div>
@@ -32,10 +34,10 @@ export default {
       },
        show: false,
       actions: [
-        { name: '查看公告' },
         { name: '公告详情' },
         { name: '发布时间', subname: '2020-01-01' }
       ],
+      title:'',
       system_notice_list:[]
     };
   },
@@ -69,6 +71,8 @@ export default {
   methods: {
     itemStyle(){
       this.show = true
+      this.use=true
+      this.title='标题'
     },
      onSelect(item) {
       // 默认情况下，点击选项时不会自动关闭菜单
@@ -83,6 +87,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.class1{
+  color: red;
+}
 .notice{
   width: 100%;
   height: 100%;
