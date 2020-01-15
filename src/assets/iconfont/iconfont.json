@@ -1,0 +1,51 @@
+{
+  "id": "1527834",
+  "name": "iconfont",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4473723",
+      "name": "用户名",
+      "font_class": "yonghuming",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "5022863",
+      "name": "验证码",
+      "font_class": "yanzhengma",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "5334193",
+      "name": "手机号码",
+      "font_class": "shoujihaoma",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "6333671",
+      "name": "相机",
+      "font_class": "xiangji",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "11490683",
+      "name": "icon_chenggong",
+      "font_class": "icon_chenggong",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "11857440",
+      "name": "用户管理",
+      "font_class": "yonghuguanli",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    }
+  ]
+}
