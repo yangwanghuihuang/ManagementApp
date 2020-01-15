@@ -1,7 +1,7 @@
 <template>
   <div class="www">
     <!-- <div class="echar"> -->
-        <div id="main" :option="option" style="width: 100%;height:50%;"></div>
+        <div id="main" :option="option" style="width: 100%;height:50%;left:5%"></div>
     <!-- </div> -->
   
     <div class="workflowBg">
