@@ -12,29 +12,25 @@ const router = new VueRouter({
   router.beforeEach((to, from, next) => {
     //const access_token = store.state.user.access_token
     const access_token =  sessionStorage.getItem('access_token') 
-     console.dir(access_token)
-     console.dir(to.name)
     // console.dir('route~~~~~~~~~~' + to.name)
     if (!access_token && to.name === 'login') {
-        console.dir("!token+login")
+     
       next()
     }
      if (!access_token && to.name === 'home') {
-        console.dir("!token+home")
+       
       next('/predealapp/login')
     } 
     if (!access_token && to.name !== 'login' && to.name !== 'home') {
-        console.dir("!token+!home+!login")
+      
       next('/predealapp/login')
     } 
     if (access_token && to.name === 'login') {
-        console.dir("token+login")
-        console.dir(to.name)
+      
       next()
     } 
     if (access_token && to.name !== 'login') {
-        console.dir("token+!login")
-        console.dir(to.name)
+      
         next()
       }
    

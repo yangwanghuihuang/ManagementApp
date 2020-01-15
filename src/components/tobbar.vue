@@ -46,7 +46,7 @@
     created() {
        if (this.$route.name == "home") {
       this.active = 0;
-    } else if (this.$route.name == "policy") {
+    } else if (this.$route.name == "personal") {
       this.active = 1;
     } else if (this.$route.name == "workflow") {
       this.active = 2;
