@@ -11,6 +11,7 @@ import Personal from 'pages/policy/personal'
 import UpdateSuccess from 'pages/updateSuccess/UpdateSuccess'
 import CancelSuccess from 'pages/cancel/CancelSuccess'
 import Problem from 'pages/question/Problem'
+import NoticeDetail from 'pages/home/noticeDetail'
 import App from '../App'
 
 
@@ -31,6 +32,11 @@ const routes = [
         name: 'home',
         path: 'home',
         component:Home
+      },
+      {
+        name:'noticeDetail',
+        path:'noticeDetail',
+        component:NoticeDetail
       },
       {
         name: 'intent',

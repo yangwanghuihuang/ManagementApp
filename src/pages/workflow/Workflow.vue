@@ -58,20 +58,20 @@ export default {
     return{
       option: {
             title: {
-                text: 'ECharts 入门示例'
+                text: '用户故事统计图'
             },
             tooltip: {},
             legend: {
-                data:['销量']
+                data:['用户故事']
             },
             xAxis: {
-                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                data: ["迭代6","迭代7","迭代8"]
             },
             yAxis: {},
             series: [{
-                name: '销量',
+                name: '用户故事',
                 type: 'bar',
-                data: [5, 20, 36, 10, 10, 50]
+                data: [3, 14, 10]
             }]
         },
     }

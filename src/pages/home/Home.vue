@@ -8,10 +8,7 @@
                <div class="r_bottom">{{item.response.notice.time}}</div>
              </div>
         </div>
-        <!-- <van-action-sheet v-model="show" v-bind:class="{'class1': title}"  :actions="actions" @select="onSelect" /> -->
         <van-action-sheet v-model="show" :title="title"  :actions="actions" @select="onSelect" />
-        <!-- <div  v-html="title"></div> -->
-        <!-- 无法在打包的app上，得到这条线 -->
         <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">公告</van-divider>
       </div>
       
@@ -34,8 +31,8 @@ export default {
       },
        show: false,
       actions: [
-        { name: '公告详情' },
-        { name: '发布时间', subname: '2020-01-01' }
+        { name: '公告详情',color: '#07c160' },
+        { name: '发布时间',disabled: true, subname: '2020-01-01',color: '#07c160' }
       ],
       title:'',
       system_notice_list:[]
@@ -78,7 +75,7 @@ export default {
       // 默认情况下，点击选项时不会自动关闭菜单
       // 可以通过 close-on-click-action 属性开启自动关闭
       this.show = false;
-      Toast(item.name);
+      this.$router.push({ path: "noticeDetail" });
     },
     skipToDetail() {
       this.$router.push({ path: "workflow" });
@@ -87,39 +84,36 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.class1{
-  color: red;
-}
 .notice{
   width: 100%;
   height: 100%;
- 
-  .left{
-    width: 50%;
-    height: 100%;
-    float: left;
-    font-size: 25px;
-    margin-left: 2rem;
-    text-align: left;
-    border-bottom:1px solid #666;
-  }
-  .right{
-     float: left;
-      width: 28%;
-      padding-top: 3rem;
-    margin-top: 2rem;
-    height: 100px;
-    padding-left: 1.3rem;
-   border-bottom:1px solid #666;
-    .r_bottom{
-      margin-top: 3.5rem;
-      font-size: 10px;
-    }
-  }
-  .left,.right{
-    padding-top: 2rem;
-    margin-top: 2rem;
-    height: 100px;
-  }
+   .itemStyle{
+       width: 100%;
+       height: 30%;
+       display: flex;
+       flex-direction: row;
+       .left{
+          width: 50%;
+          // height: 30%;
+    
+           font-size: 25px;
+          margin-left: 2rem;
+          padding-top: 2rem;
+          text-align: left;
+        }
+        .right{
+            width: 28%;
+            
+         padding-top: 2rem;
+          //  margin-top: 2rem;
+          // height: 100px;
+          padding-left: 1.3rem;
+          .r_bottom{
+            margin-top: 3.5rem;
+            font-size: 10px;
+            padding-bottom: 1rem;
+          }
+        }
+   }
 }
 </style>
