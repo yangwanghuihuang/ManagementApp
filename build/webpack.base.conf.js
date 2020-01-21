@@ -36,6 +36,7 @@ module.exports = {
   module: {
     rules: [
       {
+        //对每个vue文件都是用vue-loader这个加载
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig

@@ -1,54 +1,27 @@
 <template>
   <div class="www">
     <!-- <div class="echar"> -->
-        <div id="main" :option="option" style="width: 100%;height:50%;left:5%"></div>
+        <!-- <div id="main" :option="option" style="width: 100%;height:50%;left:5%"></div> -->
     <!-- </div> -->
-  
-    <div class="workflowBg">
-        <div class="workflow-top">
-            <div class="workflow-top-text">
-                <div class="top">重磅好消息！</div>
-                    <div>携号转网要来了！</div>
-                <div>您的手机终于要自由了！</div>
-                <div>不再被运营商锁住！</div>
-            </div>
-        <van-button class="button" type="primary" @click="skip2intent()">立即登记</van-button>
-        </div>
-        <div class="workflow-header">
-            <div class="headerText">携号转网办理流程</div>
-        </div>
-        <div class="workflow-content">
-            <div class="workflow-content-step1">
-                <div class="title1">
-                    <span class="title">资格查询</span>
-                    <div class="text01">01</div>
-
-                </div>
-
-                <p>编辑短信“CXXZ#姓名#证件号码”发送至归属<br>运营商，电信10001、联通10010、移动10086，<br>查询是否符合携转条件。</p>
-            </div>
-            <div class="workflow-content-step2">
-                <div class="title1">
-                    <span class="title">授权码申请</span>
-                <div class="text01">02</div>
-
-                </div>
-                <p>编辑短信“SQXZ#姓名#证件号码”<br>发送到归属运营商，电信10001、<br>联通10010、移动10086，获取携<br>转授权码。</p>
-            </div>
-            <div class="workflow-content-step3">
-                <div class="title1">
-                    <span class="title">营业厅办理</span>
-                <div class="text01">03</div>
-
-                </div>
-                <p>带上身份证和授权码到要转入的<br>运营商营业厅办理（授权码有效<br>时间1小时）</p>
-
-            </div>
-
-        </div>
-    </div>
+         <div class="swipPic">
+           <van-swipe :autoplay="3000" indicator-color="white">
+           <van-swipe-item v-for="(image, index) in images" :key="index">
+            <img v-lazy="image" />
+          </van-swipe-item>
+          </van-swipe>
+         </div>
+         <div class="SiderBar">
+      
+         <van-sidebar v-model="activeKey"  @change="onChange">
+            <van-sidebar-item title="故障上报" />
+            <van-sidebar-item title="业主公告"  />
+            <van-sidebar-item title="投票" disabled/>
+            <van-sidebar-item title="满意度" disabled/>
+         </van-sidebar>
+          </div>
     <tabbar></tabbar>
   </div>
+  
 </template>
 <script>
   import tabbar from "../../components/tobbar.vue";  //引用组件的地址
@@ -56,29 +29,39 @@
 export default {
   data(){
     return{
-      option: {
-            title: {
-                text: '用户故事统计图'
-            },
-            tooltip: {},
-            legend: {
-                data:['用户故事']
-            },
-            xAxis: {
-                data: ["迭代6","迭代7","迭代8"]
-            },
-            yAxis: {},
-            series: [{
-                name: '用户故事',
-                type: 'bar',
-                data: [3, 14, 10]
-            }]
-        },
+       images: [
+        '/static/images/app_index1.png',
+        '/static/images/app_index2.png',
+         '/static/images/app_index1.png',
+        '/static/images/app_index2.png',
+
+        // 'https://img.yzcdn.cn/vant/apple-1.jpg',
+        // 'https://img.yzcdn.cn/vant/apple-2.jpg'
+      ],
+      // option: {
+      //       title: {
+      //           text: '用户故事统计图'
+      //       },
+      //       tooltip: {},
+      //       legend: {
+      //           data:['用户故事']
+      //       },
+      //       xAxis: {
+      //           data: ["迭代6","迭代7","迭代8"]
+      //       },
+      //       yAxis: {},
+      //       series: [{
+      //           name: '用户故事',
+      //           type: 'bar',
+      //           data: [3, 14, 10]
+      //       }]
+      //   },
+        activeKey:0,
     }
   },
     mounted(){
-       const echart=echarts.init(document.getElementById('main'));
-       echart.setOption(this.option);
+      //  const echart=echarts.init(document.getElementById('main'));
+      //  echart.setOption(this.option);
       //  window.onresize = function(){
       //   echart.resize();       
       //   }
@@ -88,9 +71,31 @@ export default {
     'tabbar': tabbar
   },
     methods:{
-          skip2intent(){
+      skip2intent(){
         this.$router.push({ path: "intent"});
       },
+       onChange(index) {
+        if(index == 0){
+           this.$router.push({
+             path:"problem"
+           })
+        }
+        if(index == 1){
+           this.$router.push({
+             path:"home"
+           })
+        }
+        if(index == 2){
+           this.$router.push({
+             path:"intent"
+           })
+        }
+        if(index == 3){
+           this.$router.push({
+             path:"intent"
+           })
+        }
+      }
     }
 }
 </script>

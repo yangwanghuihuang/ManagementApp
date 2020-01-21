@@ -9,6 +9,9 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
  import { Dialog } from 'vant';
  import './assets/iconfont/iconfont.css';
+ import { Lazyload } from 'vant';
+
+Vue.use(Lazyload);
  /* 外面框架结构 */
  require('./assets/conf/moke/index.js');
  // 引入 ECharts 主模块
@@ -18,6 +21,9 @@ require('echarts/lib/chart/bar');
 // 全局注册
 Vue.use(Dialog);
 Vue.use(Vant);
+Vue.use(Lazyload, {
+	lazyComponent: true
+  });
 Vue.use(HttpPlugin);
 new Vue({
 	router:VueRouter,

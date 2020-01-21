@@ -38,7 +38,7 @@
           }else if(this.$route.path === '/predealapp/policy'){
              this.nickname =  "携号转网政策"  
           }else if(this.$route.path === '/predealapp/problem'){
-             this.nickname =  "问题反馈"  
+             this.nickname =  "故障上报"  
           }else{
              this.nickname =  "个人信息"    
           }

@@ -32,7 +32,7 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
   quiet: true
 })
-
+// 页面 的热重载，刷新浏览器一般和webpack-dev-middleware配合使用
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
   log: () => {}
 })

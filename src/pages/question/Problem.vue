@@ -27,6 +27,20 @@
                <van-button class="picture" icon="photograph" type="info"></van-button>
             </van-uploader>
         </div>
+          <div class="problemTime">
+            <van-cell is-link @click="showPopup">请选择上传时间：</van-cell>
+            <van-popup v-model="show">
+              <van-datetime-picker
+                v-model="currentDate"
+                type="date"
+                :min-date="minDate"
+                :max-date="maxDate"
+                @confirm="zhanshi()"
+              />
+            
+            </van-popup>
+             <van-field v-model="dateTime" placeholder="请输入用户名" />
+        </div>
         <div class="problemBtn">
               <van-button  class="btn_next" plain hairline type="primary" size="large" @click="btn_next()">提交</van-button>
         </div>
@@ -37,16 +51,30 @@ export default {
      data() {
     return {
       option1: [
-        { text: '全部商品', value: 0 },
-        { text: '新款商品', value: 1 },
-        { text: '活动商品', value: 2 }
+        { text: '故障类型', value: 0 },
+        { text: '类型一', value: 1 },
+        { text: '类型二', value: 2 }
       ],
+      minDate: new Date(2020, 0, 1),
+      maxDate: new Date(2025, 10, 1),
+      currentDate: new Date(),
+      dateTime:'',
+        show: false,
        fileList: [
         // { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
         // // Uploader 根据文件后缀来判断是否为图片文件
         // // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
         // { url: 'https://cloud-image', isImage: true }
       ]
+    }
+  },
+  methods:{
+     showPopup() {
+      this.show = true;
+    },
+    zhanshi(){
+     console.dir(this.currentDate) 
+     this.show = false
     }
   }
 }

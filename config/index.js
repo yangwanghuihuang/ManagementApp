@@ -1,5 +1,5 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
-var path = require('path')
+var path = require('path') //Node.js核心模块
 
 module.exports = {
   build: {
