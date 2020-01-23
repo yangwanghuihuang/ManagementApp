@@ -6,7 +6,7 @@ module.exports = {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: './static', // 编译之后的路径
+    assetsSubDirectory: 'static', // 编译之后的路径
     assetsPublicPath: './', // 编译之后的路径
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
@@ -25,7 +25,7 @@ module.exports = {
     env: require('./dev.env'),
     port: 3000,
     autoOpenBrowser: true,
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: 'static',//编译之后的路径
     assetsPublicPath: '/',
     proxyTable: {
       '/predealsrv': {

@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
     routes,
-    mode: 'history'
+  //  mode: 'history'
   })
   router.beforeEach((to, from, next) => {
     //const access_token = store.state.user.access_token
@@ -19,11 +19,11 @@ const router = new VueRouter({
     }
      if (!access_token && to.name === 'home') {
        
-      next('/predealapp/login')
+      next('/login')
     } 
     if (!access_token && to.name !== 'login' && to.name !== 'home') {
       
-      next('/predealapp/login')
+      next('/login')
     } 
     if (access_token && to.name === 'login') {
       

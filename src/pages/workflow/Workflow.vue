@@ -4,11 +4,12 @@
         <!-- <div id="main" :option="option" style="width: 100%;height:50%;left:5%"></div> -->
     <!-- </div> -->
          <div class="swipPic">
-           <van-swipe :autoplay="3000" indicator-color="white">
+           <van-swipe :autoplay="3000" >
            <van-swipe-item v-for="(image, index) in images" :key="index">
             <img v-lazy="image" />
           </van-swipe-item>
           </van-swipe>
+          <!-- <img :src="url"/> -->
          </div>
          <div class="SiderBar">     
          <van-sidebar v-model="activeKey"  @change="onChange">
@@ -28,14 +29,15 @@
 export default {
   data(){
     return{
+      // url:'static/images/app_index2.png',
        images: [
-        '/static/images/app_index1.png',
-        '/static/images/app_index2.png',
-         '/static/images/app_index1.png',
-        '/static/images/app_index2.png',
+        'static/images/app_index1.png',
+        'static/images/app_index2.png',
+         'static/images/app_index1.png',
+        'static/images/app_index2.png',
 
-        '/static/images/apple-1.png',
-       '/static/images/apple-2.jpg',
+        'static/images/apple-1.png',
+       'static/images/apple-2.jpg',
       ],
       // option: {
       //       title: {
@@ -102,12 +104,12 @@ export default {
   .www {
     height: 100%;
     .swipPic {
-      height: 5%;
+      height: 35%;
       width: 100%;
-      // background-image: url(../../../static/images/bg_workflow.png);
-      background-repeat : no-repeat;
-      background-size: 100% 100%;
-    margin-bottom: 25rem;
+      //  background-image: url(../../../static/images/bg_workflow.png);
+      // background-repeat : no-repeat;
+      // background-size: 100% 100%;
+    margin-bottom: 15rem;
     }
     .SiderBar{
       height: 60%;

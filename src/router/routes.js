@@ -18,11 +18,11 @@ import App from '../App'
 
 // 配置routes
 const routes = [
-  {path: '', redirect: '/predealapp'},
+ // {path: '', redirect: '/predealapp'},
   {
-    path: '/predealapp',
+    path: '',
     component:App,
-    redirect:'/predealapp/login',
+    redirect:'/login',
     children:[
       {
          name:'login',
