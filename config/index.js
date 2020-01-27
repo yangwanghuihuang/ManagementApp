@@ -28,8 +28,8 @@ module.exports = {
     assetsSubDirectory: 'static',//编译之后的路径
     assetsPublicPath: '/',
     proxyTable: {
-      '/predealsrv': {
-        target: 'http://10.12.1.71:32261/',  //目标接口域名
+      '/Manager': {
+        target: 'http://192.168.0.104:8081/',  //目标接口域名
         changeOrigin: true,  //是否跨域
       }
     },

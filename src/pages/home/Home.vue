@@ -2,7 +2,7 @@
   <div class="notice">
       <div v-for="(item, index) in system_notice_list" :key="index">
         <div class="itemStyle">
-             <div class="left"  @click="itemStyle()">{{item.response.notice.title}}</div>
+             <div class="left"  @click="itemStyle()">{{item.count}}</div>
              <div class="right"> 
                {{item.response.notice.content}}
                <div class="r_bottom">{{item.response.notice.time}}</div>
@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import notice from "../../assets/conf/moke/index.js";
 import services from  "../../assets/conf/services"
 import tabbar from "../../components/tobbar.vue"; //引用组件的地址
 export default {
@@ -48,10 +47,11 @@ export default {
   mounted() {
      //提交用户登记的信息
     this.$http
-      .post(services.moke.getNotice)
+      .post(services.getMenu.getMenu)
       .then(
         res => {
           if (res.data && res) {
+            console.dir(res.data)
              this.system_notice_list=res.data
             //进行跳转成功页面
             // 成功后调用服务
