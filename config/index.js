@@ -29,7 +29,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/Manager': {
-        target: 'http://192.168.0.104:8081/',  //目标接口域名
+        target: 'http://127.0.0.1:8081/',  //目标接口域名
         changeOrigin: true,  //是否跨域
       }
     },

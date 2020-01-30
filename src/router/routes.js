@@ -18,7 +18,7 @@ import App from '../App'
 
 // 配置routes
 const routes = [
- // {path: '', redirect: '/predealapp'},
+ // {path: '', redirect: '/Manager'},
   {
     path: '',
     component:App,

@@ -5,7 +5,13 @@ export default {
     },
     getMenu:{
       getMenu:'/Manager/getMenu1'
-    }
+    },
+    getLoginInfo:{
+      getLoginInfo:'/Manager/owner/login'
+    },
+    setProblemInfo:{
+      setProblemInfo:'/Manager/owner/faultDeclare'
+    },
 }
 // app端
 /*export default {

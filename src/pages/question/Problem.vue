@@ -12,13 +12,13 @@
               </van-dropdown-menu> -->
               <!-- <span>^</span> -->
               <select  class="menu">
-                   <option class="opt" v-for="(item) in option1" :key="item.value" value="item.value">{{item.text}}</option>       
+                   <option class="opt" v-for="(item) in option1" :key="item.value" :optValue="item.value">{{item.text}}</option>       
               </select>
             </div>
         </div>
         <div class="problemContent">
             <van-cell-group>
-                <van-field class="problemInput" type="textarea"  autosize placeholder="请输入您的反馈内容（不得超过200字）" maxlength="5"/>
+                <van-field class="problemInput" type="textarea"  v-model="content" autosize placeholder="请输入您的反馈内容（不得超过200字）" maxlength="5"/>
             </van-cell-group>
         </div>
         <div class="problemPicture">
@@ -39,7 +39,7 @@
               />
             
             </van-popup>
-             <van-field v-model="dateTime" placeholder="请输入用户名" />
+          
         </div>
         <div class="problemBtn">
               <van-button  class="btn_next" plain hairline type="primary" size="large" @click="btn_next()">提交</van-button>
@@ -47,21 +47,24 @@
     </div>
 </template>
 <script>
+import services from  "../../assets/conf/services"
 export default {
      data() {
     return {
       option1: [
         { text: '故障类型', value: 0 },
-        { text: '类型一', value: 1 },
-        { text: '类型二', value: 2 }
+        { text: '未解决', value: 1 },
+        { text: '已解决', value: 2 }
       ],
+      optValue:'',
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 10, 1),
       currentDate: new Date(),
       dateTime:'',
+      content:'',
         show: false,
        fileList: [
-        // { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
+         { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
         // // Uploader 根据文件后缀来判断是否为图片文件
         // // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
         // { url: 'https://cloud-image', isImage: true }
@@ -75,6 +78,37 @@ export default {
     zhanshi(){
      console.dir(this.currentDate) 
      this.show = false
+    },
+    btn_next(){
+       for (let i = 0; i < this.option1.length; i++) {
+         this.optValue=this.option1[i].value
+       }
+       let tmp={
+         faultUrl:this.fileList,
+         fault_content:this.content,
+         is_solve:this.optValue,
+         start_time:this.minDate,
+         end_time:this.maxDate
+       }
+       this.$http
+      .post(services.setProblemInfo.setProblemInfo,tmp)
+      .then(
+        res => {
+          if (res.data && res) {
+            console.dir(res.data)
+           
+             this.system_notice_list=res.data
+            //进行跳转成功页面
+            // 成功后调用服务
+            //给父组件传递flag标志，1为关闭当前，打开success。
+          } else if (res.data && res.data.resultCode !== "000000") {
+            this.$dialog.alert({ message: "服务器调用出错！" });
+          }
+        },
+        res => {
+          // error callback
+        }
+      );
     }
   }
 }

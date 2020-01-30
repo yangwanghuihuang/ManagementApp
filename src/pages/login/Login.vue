@@ -9,6 +9,7 @@
                            <van-field
                             center
                             clearable
+                            placeholder="请输入用户名"
                             v-model="serviceNum"
                         >
                         </van-field>
@@ -19,13 +20,18 @@
                              <i class="iconfont icon-yonghuming"></i>
                      </van-col>
                       <van-col span="22">
-                           <van-field
-                            center
-                            clearable
-                            placeholder="请输入用户名"
-                           v-model="username"
-                        >
-                        </van-field>
+                        <van-password-input
+                          v-model="password"
+                          info="请输入密码且密码为 6 位数字"
+                          :focused="showKeyboard"
+                          @focus="showKeyboard = true"
+                        />
+                        <van-number-keyboard
+                            :show="showKeyboard"
+                            @input="onInput"
+                            @delete="onDelete"
+                            @blur="showKeyboard = false"
+                          />
                       </van-col>
                  </van-row>
                  <van-row class="footer">
@@ -35,20 +41,55 @@
   </div>
 </template>
 <<script>
+import services from  "../../assets/conf/services"
 export default {
     data(){
         return{
-            serviceNum:'18332255839',
-            username:'zlr'
+            serviceNum:'',
+            password:'',
+            showKeyboard: true,
+            mask:false
         }
     },
     methods:{
+      onInput(key) {
+      this.password = (this.password + key).slice(0, 6);
+    },
+    onDelete() {
+      this.password = this.password.slice(0, this.password.length - 1);
+    },
         login(){
             // if(){
                 //校验通过
              let access_token = '45798564';
              //将token存入缓存
              this.$store.commit('user/access_token',access_token)
+             let tmp={
+                Eh_number:this.serviceNum,
+                password:this.password
+             }
+             console.dir(tmp)
+              this.$http
+                  .post(services.getLoginInfo.getLoginInfo,tmp)
+                  .then(
+                    res => {
+                      if (res.data && res) {
+                        console.dir(res.data)
+                        this.system_notice_list=res.data
+                        //进行跳转成功页面
+                        // 成功后调用服务
+                        //给父组件传递flag标志，1为关闭当前，打开success。
+                      } else if (res.data && res.data.resultCode !== "000000") {
+                        this.$dialog.alert({ message: "服务器调用出错！" });
+                      }
+                    },
+                    res => {
+                      // error callback
+                    }
+                  );
+
+
+
               this.$router.push({ name: 'home' })
             // }else{
             //      this.$dialog.alert({ message: '服务器调用出错！'});
