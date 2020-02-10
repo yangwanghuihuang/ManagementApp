@@ -15,7 +15,7 @@
          <van-sidebar v-model="activeKey"  @change="onChange">
             <van-sidebar-item title="故障上报" />
             <van-sidebar-item title="业主公告"  />
-            <van-sidebar-item title="投票" disabled/>
+            <van-sidebar-item title="投票" />
             <van-sidebar-item title="满意度" disabled/>
          </van-sidebar>
           </div>
@@ -88,7 +88,7 @@ export default {
         }
         if(index == 2){
            this.$router.push({
-             path:"intent"
+             path:"vote"
            })
         }
         if(index == 3){

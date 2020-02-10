@@ -13,6 +13,8 @@ import CancelSuccess from 'pages/cancel/CancelSuccess'
 import Problem from 'pages/question/Problem'
 import DetailSide from 'pages/workflow/detail_side'
 import NoticeDetail from 'pages/home/noticeDetail'
+import Vote from 'pages/vote/vote'
+import VoteAnswer from 'pages/vote/vote_answer'
 import App from '../App'
 
 
@@ -59,6 +61,16 @@ const routes = [
         name: 'workflow',
         component:Workflow
       },
+      {
+        name:'vote',
+        path:'vote',
+        component:Vote
+     },
+     {
+      name:'voteAnswer',
+      path:'voteAnswer',
+      component:VoteAnswer
+   },
       {
         path: 'detailSide',
         name: 'detailSide',

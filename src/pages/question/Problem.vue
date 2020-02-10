@@ -28,18 +28,29 @@
             </van-uploader>
         </div>
           <div class="problemTime">
-            <van-cell is-link @click="showPopup">请选择上传时间：</van-cell>
-            <van-popup v-model="show">
+            <van-cell is-link @click="showPopup()">请选择开始时间：</van-cell>
+            <van-popup v-model="show"  label="离开时间" position="bottom" :overlay="true">
               <van-datetime-picker
                 v-model="currentDate"
-                type="date"
-                :min-date="minDate"
-                :max-date="maxDate"
-                @confirm="zhanshi()"
+                type="datetime"
+                 @cancel="cancel()"
+                @confirm="show = false"
+                   @change="startTimeChange"
               />
-            
             </van-popup>
-          
+            <van-field  v-model="dateTime" placeholder="开始日期" />
+            <hr>
+            <van-cell is-link @click="showPp()">请选择结束时间：</van-cell>
+             <van-popup v-model="showP"  label="离开时间" position="bottom" :overlay="true">
+              <van-datetime-picker
+                v-model="currentDate_end"
+                type="datetime"
+                 @cancel="cancelP()"
+                @confirm="showP = false"
+                   @change="endTimeChange"
+              />
+             </van-popup>
+            <van-field v-model="endTime" placeholder="结束日期" />
         </div>
         <div class="problemBtn">
               <van-button  class="btn_next" plain hairline type="primary" size="large" @click="btn_next()">提交</van-button>
@@ -57,12 +68,15 @@ export default {
         { text: '已解决', value: 2 }
       ],
       optValue:'',
-      minDate: new Date(2020, 0, 1),
-      maxDate: new Date(2025, 10, 1),
-      currentDate: new Date(),
+      showP:false,
+      currentDate_end:'',
+      // minDate: new Date(2020, 0, 1),
+      // maxDate: new Date(2025, 10, 1),
+      currentDate:'',
       dateTime:'',
+      endTime:'',
       content:'',
-        show: false,
+      show: false,
        fileList: [
          { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
         // // Uploader 根据文件后缀来判断是否为图片文件
@@ -75,10 +89,23 @@ export default {
      showPopup() {
       this.show = true;
     },
-    zhanshi(){
-     console.dir(this.currentDate) 
-     this.show = false
+    showPp(){
+      this.showP = true;
     },
+   cancelP(){
+      this.showP = false;
+   },
+    cancel(){
+      this.show =false
+    },
+    startTimeChange(e){
+        let endTimeArr = e.getValues();//["2019", "03", "22", "17", "28"]
+        this.dateTime = `${endTimeArr[0]}-${endTimeArr[1]}-${endTimeArr[2]}  ${endTimeArr[3]}:${endTimeArr[4]}:00`
+    },
+     endTimeChange(e) {
+        let endTimeArr = e.getValues();//["2019", "03", "22", "17", "28"]
+        this.endTime = `${endTimeArr[0]}-${endTimeArr[1]}-${endTimeArr[2]}  ${endTimeArr[3]}:${endTimeArr[4]}:00`
+      },
     btn_next(){
        for (let i = 0; i < this.option1.length; i++) {
          this.optValue=this.option1[i].value
@@ -87,8 +114,8 @@ export default {
          faultUrl:this.fileList,
          fault_content:this.content,
          is_solve:this.optValue,
-         start_time:this.minDate,
-         end_time:this.maxDate
+        start_time:this.dateTime,
+        end_time:this.endTime
        }
        this.$http
       .post(services.setProblemInfo.setProblemInfo,tmp)
