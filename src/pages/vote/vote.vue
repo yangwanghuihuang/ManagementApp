@@ -11,29 +11,53 @@
     </div>
 </template>
 <script>
+import services from  "../../assets/conf/services"
 export default {
     data() {
         return {
             vote_list:[
-            {
-                id:'1',
-                rem:'145263'
-            },
-            {
-                id:'2',
-                rem:'jhvuoafbup'
-            },
+                {
+                    id:'1',
+                    rem:'12345649'
+                },
+                {
+                    id:'2',
+                    rem:'456456456'
+                }
             ]
         }
     },
     methods:{
         mounted() {
             //请求后台，获取题目
+            this.$http.post(service.getVoteInfo.getVoteInfo).then(
+                res => {
+                    if (res.data && res) {
+                        console.dir(res.data)
+                        this.vote_list=res.data
+                        //进行跳转成功页面
+                        // 成功后调用服务
+                        //给父组件传递flag标志，1为关闭当前，打开success。
+                    } else if (res.data && res.data.resultCode !== "000000") {
+                        this.$dialog.alert({ message: "服务器调用出错！" });
+                    }
+                },
+                res => {
+                // error callback
+                }
+            );
 
         },
         getAnswer(value){
             if(value === '1'){
-                this.$router.push({ path: "voteAnswer" });
+                //传递当前问卷的id
+                console.dir(value)
+                this.$router.push({
+                     name: "voteAnswer",
+                     params:{
+                         vote_id:value
+                          }
+                      });
             }
            
         }

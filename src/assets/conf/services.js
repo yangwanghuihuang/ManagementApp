@@ -12,6 +12,12 @@ export default {
     setProblemInfo:{
       setProblemInfo:'/Manager/owner/faultDeclare'
     },
+    getVoteInfo:{
+      getVoteInfo:'/Manager/tenant/getBiaoTi'
+    },
+    getAnswer:{
+      getAnswer:'/Manager/tenant/getTiMu'
+    }
 }
 // app端
 /*export default {
