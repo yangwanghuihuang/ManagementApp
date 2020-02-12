@@ -4,9 +4,15 @@
 
         </div>
         <div class="answer" v-for="(item, index) in answer_list" :key="index">
-           <van-checkbox v-model="checked">{{item.rem}}</van-checkbox> 
+            <div class="title_style">{{item.topic}}</div>
+
+            <div  class="answer_style" v-for="(one, index) in item.options" :key="index">
+                <van-checkbox v-model="checked">{{one.opt_name}}</van-checkbox> 
+            </div>
+           
              <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }"></van-divider>
         </div>
+
        
     </div>
 </template>
@@ -19,12 +25,26 @@ export default {
             voteId:'',
             answer_list:[
             {
-                id:'1',
-                rem:'145263'
+                topic:'是否满意',
+                options:[
+                    {
+                   opt_name:'满意'
+                    },
+                    {
+                   opt_name:'不 满意'
+                    }
+                    ]
             },
             {
-                id:'2',
-                rem:'jhvuoafbup'
+                 topic:'哪些意见',
+                options:[
+                    {
+                   opt_name:'无意间'
+                    },
+                    {
+                   opt_name:'很好'
+                    }
+                    ]
             },
             ]
         }
@@ -63,9 +83,19 @@ export default {
     width: 100%;
     height: 5%;
 }
+
 .answer{
     width: 80%;
+    height: 40%;
     margin-left: 2rem;
     padding: 0.8rem;
+    .title_style{
+    width: 100%;
+    height: 20%;
+    }
+    .answer_style{
+        width: 100%;
+        height: 20%;
+    }
 }
 </style>
