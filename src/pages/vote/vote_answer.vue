@@ -7,7 +7,7 @@
             <div class="title_style">{{item.topic}}</div>
 
             <div  class="answer_style" v-for="(one, index) in item.options" :key="index">
-                <van-checkbox v-model="checked">{{one.opt_name}}</van-checkbox> 
+                <van-checkbox v-model="checked">{{one.optionName}}</van-checkbox> 
             </div>
            
              <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }"></van-divider>

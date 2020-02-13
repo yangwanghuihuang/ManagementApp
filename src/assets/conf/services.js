@@ -7,16 +7,16 @@ export default {
       getMenu:'/Manager/getMenu1'
     },
     getLoginInfo:{
-      getLoginInfo:'/Manager/owner/login'
+      getLoginInfo:'/Manager/login'
     },
     setProblemInfo:{
-      setProblemInfo:'/Manager/owner/faultDeclare'
+      setProblemInfo:'/Manager/faultDeclare'
     },
     getVoteInfo:{
-      getVoteInfo:'/Manager/tenant/getBiaoTi'
+      getVoteInfo:'/Manager/getBiaoTi'
     },
     getAnswer:{
-      getAnswer:'/Manager/tenant/getTiMu'
+      getAnswer:'/Manager/getTiMu'
     }
 }
 // app端
