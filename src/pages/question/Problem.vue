@@ -111,7 +111,7 @@ export default {
          this.optValue=this.option1[i].value
        }
        let tmp={
-         faultUrl:this.fileList,
+         faultPicture:this.fileList,
          fault_content:this.content,
          is_solve:this.optValue,
         start_time:this.dateTime,

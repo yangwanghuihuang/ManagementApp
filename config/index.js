@@ -29,7 +29,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/Manager': {
-        target: 'http://jd6twn.natappfree.cc:80/',  //目标接口域名
+        target: 'http://k9x33a.natappfree.cc:80/',  //目标接口域名
         changeOrigin: true,  //是否跨域
       }
     },

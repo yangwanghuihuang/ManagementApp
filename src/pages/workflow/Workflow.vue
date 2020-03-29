@@ -14,7 +14,7 @@
          <div class="SiderBar">     
          <van-sidebar v-model="activeKey"  @change="onChange">
             <van-sidebar-item title="故障上报" />
-            <van-sidebar-item title="业主公告"  />
+            <van-sidebar-item title="投诉建议"  />
             <van-sidebar-item title="投票" />
             <van-sidebar-item title="满意度" disabled/>
          </van-sidebar>
@@ -83,7 +83,8 @@ export default {
         }
         if(index == 1){
            this.$router.push({
-             path:"home"
+             //投诉建议
+             path:"advice"
            })
         }
         if(index == 2){

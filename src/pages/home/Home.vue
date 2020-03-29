@@ -1,11 +1,12 @@
 <template>
   <div class="notice">
       <div v-for="(item, index) in system_notice_list" :key="index">
+    
         <div class="itemStyle">
-             <div class="left"  @click="itemStyle()">{{item.count}}</div>
+             <div class="left"  @click="itemStyle(item.notice_id)">{{index+1}}</div>
              <div class="right"> 
-               {{item.response.notice.content}}
-               <div class="r_bottom">{{item.response.notice.time}}</div>
+               {{item.noticeTitle}}
+               <div class="r_bottom">{{item.noticeContent}}</div>
              </div>
         </div>
         <van-action-sheet v-model="show" :title="title"  :actions="actions" @select="onSelect" />
@@ -25,12 +26,13 @@ export default {
   },
   data() {
     return {
+      noticeId:'1',
       height: {
         height: ""
       },
        show: false,
       actions: [
-        { name: '公告详情',color: '#07c160' },
+        { name: '公告详情',color: '#07c160',id:'1'},
         { name: '发布时间',disabled: true, subname: '2020-01-01',color: '#07c160' }
       ],
       title:'',
@@ -66,7 +68,8 @@ export default {
       );
   },
   methods: {
-    itemStyle(){
+    itemStyle(index){
+      this.noticeId=index
       this.show = true
       this.use=true
       this.title='标题'
@@ -74,8 +77,15 @@ export default {
      onSelect(item) {
       // 默认情况下，点击选项时不会自动关闭菜单
       // 可以通过 close-on-click-action 属性开启自动关闭
+      console.dir(this.noticeId)
+      item.id=this.noticeId
       this.show = false;
-      this.$router.push({ path: "noticeDetail" });
+      this.$router.push({
+         name: "noticeDetail" ,
+         params:{
+            noticeId:item.id
+         }        
+         });
     },
     skipToDetail() {
       this.$router.push({ path: "workflow" });

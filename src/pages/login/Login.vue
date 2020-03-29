@@ -76,6 +76,12 @@ export default {
                       if (res.data && res) {
                         console.dir(res.data)
                         this.system_notice_list=res.data
+                        console.dir(res.data.code==='1')
+                        if(res.data.code==='1'){
+                           this.$router.push({ name: 'home' })
+                        }else{
+                           this.$dialog.alert({ message: "用户名密码错误，请重新登陆" });
+                        }
                         //进行跳转成功页面
                         // 成功后调用服务
                         //给父组件传递flag标志，1为关闭当前，打开success。
@@ -87,15 +93,6 @@ export default {
                       // error callback
                     }
                   );
-
-
-
-              this.$router.push({ name: 'home' })
-            // }else{
-            //      this.$dialog.alert({ message: '服务器调用出错！'});
-            // }
-            
-              
         }
     }
 }

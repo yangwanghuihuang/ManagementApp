@@ -4,7 +4,10 @@ export default {
        getNotice:'/header/system_notice_list'
     },
     getMenu:{
-      getMenu:'/Manager/getMenu1'
+      getMenu:'/Manager/getNotices1'
+    },
+    getNoticeById:{
+      getNoticeById:'/Manager/getNoticeById'
     },
     getLoginInfo:{
       getLoginInfo:'/Manager/login'
